@@ -1,0 +1,34 @@
+# Core spatial prepositions
+above
+below
+beneath
+beside
+near
+between
+among
+behind
+across
+against
+
+# Missing — common in your prompts (BUG 2 fix)
+on
+in
+over
+under
+onto
+into
+upon
+atop
+underneath
+beyond
+inside
+outside
+around
+along
+through
+within
+alongside
+opposite
+past
+toward
+towards

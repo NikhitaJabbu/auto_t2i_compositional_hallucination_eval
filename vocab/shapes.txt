@@ -1,0 +1,10 @@
+round
+rectangular
+square
+oval
+flat
+cylindrical
+triangular
+curved
+dome
+conical

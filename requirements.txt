@@ -1,0 +1,24 @@
+# Core ML
+torch==2.11.0+cu130
+torchvision==0.26.0+cu130
+
+# Model libraries
+transformers==4.54.0
+accelerate==1.13.0
+open-clip-torch==3.3.0
+qwen-vl-utils==0.0.14
+
+# Detection and segmentation
+segment-anything==1.0
+pycocotools==2.0.11
+
+# NLP
+spacy==3.8.11
+
+# Image and vision
+opencv-python==4.13.0.92
+Pillow==12.1.1
+
+# Utilities
+numpy==2.4.3
+requests==2.32.5

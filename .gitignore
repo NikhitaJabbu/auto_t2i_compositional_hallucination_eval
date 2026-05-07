@@ -1,0 +1,57 @@
+# Claude internal files
+.claude/
+
+# Reference papers
+*.pdf
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Model weights and large binaries
+weights/
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+
+# Third-party repos (cloned by setup.sh)
+GroundingDINO/
+CountGD/
+
+# ComfyUI (set up separately)
+ComfyUI/
+
+# Generated outputs
+Outputs/
+
+# Downloaded model cache (HuggingFace, etc.)
+.cache/
+Models/__pycache__/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

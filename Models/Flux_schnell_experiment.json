@@ -1,0 +1,187 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-schnell-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "_meta": { "title": "Load Diffusion Model" }
+  },
+  "2": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "_meta": { "title": "DualCLIPLoader" }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "_meta": { "title": "VAE Loader" }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": ["2", 0]
+    },
+    "_meta": { "title": "Positive Prompt (shared)" }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": ["2", 0]
+    },
+    "_meta": { "title": "Negative Prompt (shared)" }
+  },
+
+  "10": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": { "width": 1024, "height": 1024, "batch_size": 1 },
+    "_meta": { "title": "Latent 1024x1024" }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 40477564284327,
+      "steps": 4, "cfg": 1.0,
+      "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0,
+      "model":        ["1", 0],
+      "positive":     ["4", 0],
+      "negative":     ["5", 0],
+      "latent_image": ["10", 0]
+    },
+    "_meta": { "title": "KSampler 1024x1024" }
+  },
+  "12": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["11", 0], "vae": ["3", 0] },
+    "_meta": { "title": "VAE Decode 1024x1024" }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": { "filename_prefix": "1024x1024/img", "images": ["12", 0] },
+    "_meta": { "title": "Save 1024x1024" }
+  },
+
+  "20": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": { "width": 2048, "height": 2048, "batch_size": 1 },
+    "_meta": { "title": "Latent 2048x2048" }
+  },
+  "21": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 40477564284327,
+      "steps": 4, "cfg": 1.0,
+      "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0,
+      "model":        ["1", 0],
+      "positive":     ["4", 0],
+      "negative":     ["5", 0],
+      "latent_image": ["20", 0]
+    },
+    "_meta": { "title": "KSampler 2048x2048" }
+  },
+  "22": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["21", 0], "vae": ["3", 0] },
+    "_meta": { "title": "VAE Decode 2048x2048" }
+  },
+  "23": {
+    "class_type": "SaveImage",
+    "inputs": { "filename_prefix": "2048x2048/img", "images": ["22", 0] },
+    "_meta": { "title": "Save 2048x2048" }
+  },
+
+  "30": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": { "width": 1048, "height": 256, "batch_size": 1 },
+    "_meta": { "title": "Latent 1048x256" }
+  },
+  "31": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 40477564284327,
+      "steps": 4, "cfg": 1.0,
+      "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0,
+      "model":        ["1", 0],
+      "positive":     ["4", 0],
+      "negative":     ["5", 0],
+      "latent_image": ["30", 0]
+    },
+    "_meta": { "title": "KSampler 1048x256" }
+  },
+  "32": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["31", 0], "vae": ["3", 0] },
+    "_meta": { "title": "VAE Decode 1048x256" }
+  },
+  "33": {
+    "class_type": "SaveImage",
+    "inputs": { "filename_prefix": "1048x256/img", "images": ["32", 0] },
+    "_meta": { "title": "Save 1048x256" }
+  },
+
+  "40": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": { "width": 256, "height": 2048, "batch_size": 1 },
+    "_meta": { "title": "Latent 256x2048" }
+  },
+  "41": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 40477564284327,
+      "steps": 4, "cfg": 1.0,
+      "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0,
+      "model":        ["1", 0],
+      "positive":     ["4", 0],
+      "negative":     ["5", 0],
+      "latent_image": ["40", 0]
+    },
+    "_meta": { "title": "KSampler 256x2048" }
+  },
+  "42": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["41", 0], "vae": ["3", 0] },
+    "_meta": { "title": "VAE Decode 256x2048" }
+  },
+  "43": {
+    "class_type": "SaveImage",
+    "inputs": { "filename_prefix": "256x2048/img", "images": ["42", 0] },
+    "_meta": { "title": "Save 256x2048" }
+  },
+
+  "50": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": { "width": 256, "height": 256, "batch_size": 1 },
+    "_meta": { "title": "Latent 256x256" }
+  },
+  "51": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 40477564284327,
+      "steps": 4, "cfg": 1.0,
+      "sampler_name": "euler", "scheduler": "simple", "denoise": 1.0,
+      "model":        ["1", 0],
+      "positive":     ["4", 0],
+      "negative":     ["5", 0],
+      "latent_image": ["50", 0]
+    },
+    "_meta": { "title": "KSampler 256x256" }
+  },
+  "52": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["51", 0], "vae": ["3", 0] },
+    "_meta": { "title": "VAE Decode 256x256" }
+  },
+  "53": {
+    "class_type": "SaveImage",
+    "inputs": { "filename_prefix": "256x256/img", "images": ["52", 0] },
+    "_meta": { "title": "Save 256x256" }
+  }
+}

@@ -1,0 +1,59 @@
+# Visual interaction predicates for RelTR / SigLIP2 semantic relation scoring
+# Gerund / participial form so scoring templates stay grammatical.
+
+# --- handling ---
+holding
+carrying
+grabbing
+lifting
+
+# --- wearing ---
+wearing
+
+# --- riding / driving ---
+riding
+driving
+pulling
+
+# --- eating / drinking ---
+eating
+drinking from
+
+# --- attention / gaze ---
+looking at
+watching
+facing
+
+# --- physical contact ---
+touching
+hugging
+petting
+pushing
+
+# --- physical positioning / support ---
+sitting on
+standing on
+lying on
+resting on
+leaning against
+hanging on
+draped over
+mounted on
+hung on
+placed on
+wrapped around
+supported by
+inside
+attached to
+
+# --- covering / connecting (rare in VG — handled by SigLIP2 fallback) ---
+covering
+connecting
+supporting
+using
+covering over
+
+# --- activity ---
+playing with
+walking beside
+chasing
